@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Birthday Dog QR AR</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <video id="camera" autoplay playsinline muted></video>
+    <canvas id="scanCanvas" aria-hidden="true"></canvas>
+
+    <section id="startPanel" class="panel">
+      <h1>A birthday memory</h1>
+      <p>Allow camera access, then point the rear camera at the printed QR code.</p>
+      <button id="startBtn">Start camera</button>
+    </section>
+
+    <section id="hint" class="hint hidden">
+      Point camera at the same QR code
+    </section>
+
+    <div id="dogAnchor" class="hidden">
+      <div id="dogMotion">
+        <model-viewer
+          id="dogModel"
+          src="assets/dog.glb"
+          alt="3D dog memory"
+          camera-controls
+          disable-zoom
+          autoplay
+          auto-rotate
+          rotation-per-second="18deg"
+          shadow-intensity="0.8"
+          exposure="1.1"
+          interaction-prompt="none"
+          style="background: transparent;">
+        </model-viewer>
+      </div>
+    </div>
+
+    <section id="message" class="message hidden">
+      <strong>Buddy is here as a memory.</strong><br />
+      Not to replace the real moments, just to keep one gentle piece close today.
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
